@@ -1,8 +1,8 @@
 {
   "name": "library",
-  "version": "1.0.8",
+  "version": "1.0.16",
   "description": "example library",
-  "main": "dist/lib.umd.js",
+  "main": "dist/lib.esm.js",
   "module":"dist/lib.esm.js",
   "types":"dist/types/lib.d.ts",
   "license": "MIT",
@@ -13,19 +13,7 @@
     "tslib": "^2.3.1",
     "typescript": "^4.5.5"
   },
-  "exports": {
-    "import": "./dist/lib.esm.js",
-    "require": "./dist/lib.umd.js"
-  },
   "scripts": {
-    "build:types": "tsc -d --emitDeclarationOnly",
-    "build:js": "rollup -c rollup.config.js",
-    "build:minjs:umd": "terser dist/index.umd.js --compress --mangle > dist/index.umd.min.js",
-    "build:minjs:esm": "terser dist/index.esm.js --compress --mangle > dist/index.esm.min.js",
-    "build:minjs": "npm run build:minjs:esm -s && npm run build:minjs:umd -s",
-    "build": "npm run build:js -s && npm run build:minjs -s && npm run build:types -s",
-    "prepublishOnly": "npm run lint -s && npm test -s && npm run build",
-    "semantic-release": "semantic-release"
-  },
-  "type":"module"
+    "build": "rollup -c rollup.config.js"
+  }
 }

@@ -6,6 +6,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const browserify = require('gulp-browserify');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const babelify = require('babelify');
 
 function cleanAll(cb) {
   return gulp.src([
@@ -29,7 +30,9 @@ function minJS() {
   return gulp
       .src('./tmp/js/Index.js')
       .pipe(sourcemaps.init({ loadMaps: true }))
-      .pipe(browserify())
+      .pipe(browserify({
+        transform:[babelify.configure({presets:['@babel/preset-env']})]
+      }))
     //   .pipe(uglify())
       .pipe(concat('index.min.js'))
       .pipe(sourcemaps.write('./sourcemaps'))

@@ -11,7 +11,8 @@ export default {
       file: 'dist/lib.umd.js',
       format: 'umd',
       name: 'Lib',
+      exports: 'default'
     },
   ],
-  plugins: [typescript({tsconfig:'./tsconfig.json'})],
+  plugins: [typescript({ tsconfig: './tsconfig.json' })],
 };
